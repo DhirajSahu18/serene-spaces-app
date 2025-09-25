@@ -13,18 +13,18 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="wellness-card mx-4 mt-4 lg:mx-6">
+    <nav className="wellness-card mx-4 mt-4 lg:mx-6 shadow-vibrant">
       <div className="flex flex-wrap justify-center gap-2 lg:gap-4">
         {navItems.map(({ path, label, icon: Icon }) => (
           <Link
             key={path}
             to={path}
             className={cn(
-              "flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300",
-              "hover:bg-primary/10 hover:text-primary",
+              "flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 hover:scale-105",
+              "hover:bg-primary/15 hover:text-primary hover:shadow-glow",
               location.pathname === path
-                ? "bg-primary text-primary-foreground shadow-soft"
-                : "text-muted-foreground"
+                ? "btn-vibrant pulse-glow"
+                : "text-muted-foreground hover:text-wellness-energy"
             )}
           >
             <Icon className="w-4 h-4" />

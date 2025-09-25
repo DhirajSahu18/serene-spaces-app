@@ -7,11 +7,11 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden wellness-gradient py-16 lg:py-24">
+      <section className="relative overflow-hidden wellness-dynamic py-16 lg:py-24">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto space-y-6">
             <div className="flex justify-center">
-              <Heart className="w-16 h-16 text-white/90" />
+              <Heart className="w-16 h-16 text-white/90 floating-element" />
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold text-white">
               Your Mental Wellness
@@ -25,7 +25,7 @@ const Home = () => {
               <Button 
                 asChild 
                 size="lg" 
-                className="bg-white text-primary hover:bg-white/90 shadow-warm"
+                className="btn-vibrant pulse-glow"
               >
                 <Link to="/questionnaire">
                   <BarChart3 className="w-5 h-5 mr-2" />
@@ -36,7 +36,7 @@ const Home = () => {
                 asChild 
                 size="lg" 
                 variant="outline"
-                className="border-white text-white hover:bg-white/10"
+                className="border-white text-white hover:bg-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-105"
               >
                 <Link to="/journal">
                   <FileText className="w-5 h-5 mr-2" />
@@ -62,10 +62,10 @@ const Home = () => {
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {/* Mental Health Check-In */}
-            <Card className="wellness-card group hover:shadow-soft transition-all duration-300">
+            <Card className="wellness-card group hover:shadow-vibrant transition-all duration-500 hover:border-wellness-calm/50">
               <CardHeader>
-                <div className="w-12 h-12 wellness-peaceful rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <BarChart3 className="w-6 h-6 text-wellness-calm" />
+                <div className="w-12 h-12 bg-wellness-gradient rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-glow bounce-subtle">
+                  <BarChart3 className="w-6 h-6 text-white" />
                 </div>
                 <CardTitle className="text-wellness-calm">Mental Health Check-In</CardTitle>
                 <CardDescription>
@@ -86,10 +86,10 @@ const Home = () => {
             </Card>
 
             {/* Personal Journal */}
-            <Card className="wellness-card group hover:shadow-soft transition-all duration-300">
+            <Card className="wellness-card group hover:shadow-vibrant transition-all duration-500 hover:border-wellness-growth/50">
               <CardHeader>
-                <div className="w-12 h-12 wellness-supportive rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <FileText className="w-6 h-6 text-wellness-growth" />
+                <div className="w-12 h-12 bg-supportive-gradient rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-warm floating-element">
+                  <FileText className="w-6 h-6 text-white" />
                 </div>
                 <CardTitle className="text-wellness-growth">Personal Journal</CardTitle>
                 <CardDescription>
@@ -110,10 +110,10 @@ const Home = () => {
             </Card>
 
             {/* Support Resources */}
-            <Card className="wellness-card group hover:shadow-soft transition-all duration-300 md:col-span-2 lg:col-span-1">
+            <Card className="wellness-card group hover:shadow-vibrant transition-all duration-500 md:col-span-2 lg:col-span-1 hover:border-wellness-hope/50">
               <CardHeader>
-                <div className="w-12 h-12 bg-wellness-hope/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Phone className="w-6 h-6 text-wellness-hope" />
+                <div className="w-12 h-12 bg-energetic-gradient rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-warm pulse-glow">
+                  <Phone className="w-6 h-6 text-white" />
                 </div>
                 <CardTitle className="text-wellness-hope">Support Resources</CardTitle>
                 <CardDescription>

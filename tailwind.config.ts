@@ -30,6 +30,8 @@ export default {
           growth: "hsl(var(--wellness-growth))",
           support: "hsl(var(--wellness-support))",
           hope: "hsl(var(--wellness-hope))",
+          energy: "hsl(var(--wellness-energy))",
+          joy: "hsl(var(--wellness-joy))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -77,11 +79,15 @@ export default {
         'wellness-gradient': 'var(--gradient-calm)',
         'peaceful-gradient': 'var(--gradient-peaceful)',
         'supportive-gradient': 'var(--gradient-supportive)',
+        'energetic-gradient': 'var(--gradient-energetic)',
+        'dynamic-gradient': 'var(--gradient-dynamic)',
       },
       boxShadow: {
         'gentle': 'var(--shadow-gentle)',
         'soft': 'var(--shadow-soft)',
         'warm': 'var(--shadow-warm)',
+        'glow': 'var(--shadow-glow)',
+        'vibrant': 'var(--shadow-vibrant)',
       },
       keyframes: {
         "accordion-down": {

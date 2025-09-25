@@ -17,22 +17,23 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 25% 25%;
 
-    /* Calming Blue Primary */
-    --primary: 210 55% 65%;
+    /* Vibrant Blue Primary */
+    --primary: 210 80% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-soft: 210 30% 85%;
+    --primary-soft: 210 60% 85%;
+    --primary-glow: 210 90% 70%;
 
-    /* Soft Secondary */
-    --secondary: 200 25% 90%;
-    --secondary-foreground: 220 25% 35%;
+    /* Energetic Secondary */
+    --secondary: 280 60% 75%;
+    --secondary-foreground: 280 80% 15%;
 
-    /* Gentle Muted */
-    --muted: 220 15% 95%;
-    --muted-foreground: 220 15% 55%;
+    /* Dynamic Muted */
+    --muted: 220 30% 94%;
+    --muted-foreground: 220 40% 45%;
 
-    /* Warm Accent */
-    --accent: 150 25% 85%;
-    --accent-foreground: 150 35% 35%;
+    /* Vibrant Accent */
+    --accent: 150 60% 70%;
+    --accent-foreground: 150 80% 20%;
 
     /* Soft Warning/Error */
     --destructive: 10 65% 70%;
@@ -45,22 +46,28 @@
 
     --radius: 1rem;
 
-    /* Wellness Gradients */
-    --gradient-calm: linear-gradient(135deg, hsl(210, 55%, 75%) 0%, hsl(220, 45%, 85%) 100%);
-    --gradient-peaceful: linear-gradient(135deg, hsl(200, 35%, 90%) 0%, hsl(210, 25%, 95%) 100%);
-    --gradient-supportive: linear-gradient(135deg, hsl(150, 25%, 85%) 0%, hsl(180, 20%, 90%) 100%);
+    /* Vibrant Gradients */
+    --gradient-calm: linear-gradient(135deg, hsl(210, 80%, 60%) 0%, hsl(280, 60%, 75%) 50%, hsl(210, 90%, 70%) 100%);
+    --gradient-peaceful: linear-gradient(135deg, hsl(200, 70%, 80%) 0%, hsl(150, 60%, 85%) 100%);
+    --gradient-supportive: linear-gradient(135deg, hsl(150, 60%, 70%) 0%, hsl(180, 70%, 75%) 100%);
+    --gradient-energetic: linear-gradient(135deg, hsl(280, 60%, 75%) 0%, hsl(320, 50%, 80%) 50%, hsl(45, 80%, 75%) 100%);
+    --gradient-dynamic: linear-gradient(45deg, hsl(210, 80%, 60%), hsl(280, 60%, 75%), hsl(150, 60%, 70%), hsl(45, 80%, 75%));
 
-    /* Wellness Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(210 55% 65% / 0.15);
-    --shadow-gentle: 0 2px 12px -2px hsl(210 55% 65% / 0.1);
-    --shadow-warm: 0 6px 25px -6px hsl(150 25% 75% / 0.2);
+    /* Enhanced Shadows with Color */
+    --shadow-soft: 0 8px 30px -8px hsl(210 80% 60% / 0.25);
+    --shadow-gentle: 0 4px 20px -4px hsl(210 80% 60% / 0.15);
+    --shadow-warm: 0 10px 35px -10px hsl(150 60% 70% / 0.3);
+    --shadow-glow: 0 0 40px hsl(210 90% 70% / 0.4);
+    --shadow-vibrant: 0 12px 40px -8px hsl(280 60% 75% / 0.3);
 
-    /* Wellness Colors */
-    --wellness-calm: 210 55% 75%;
-    --wellness-peace: 200 35% 80%;
-    --wellness-growth: 150 35% 75%;
-    --wellness-support: 180 25% 80%;
-    --wellness-hope: 45 45% 80%;
+    /* Vibrant Wellness Colors */
+    --wellness-calm: 210 80% 60%;
+    --wellness-peace: 200 70% 65%;
+    --wellness-growth: 150 70% 55%;
+    --wellness-support: 180 60% 60%;
+    --wellness-hope: 45 80% 65%;
+    --wellness-energy: 280 70% 65%;
+    --wellness-joy: 320 60% 70%;
 
     /* Sidebar (using calming theme) */
     --sidebar-background: 220 15% 96%;
@@ -144,12 +151,18 @@
 
 @layer components {
   .wellness-card {
-    @apply bg-card border border-border/50 shadow-gentle rounded-2xl p-6;
+    @apply bg-card border border-border/50 shadow-gentle rounded-2xl p-6 transition-all duration-300;
     background: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--card) / 0.98) 100%);
+  }
+
+  .wellness-card:hover {
+    @apply shadow-vibrant scale-[1.02] border-primary/30;
+    background: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--primary) / 0.05) 100%);
   }
 
   .wellness-gradient {
     background: var(--gradient-calm);
+    animation: gradient-shift 6s ease-in-out infinite;
   }
 
   .wellness-peaceful {
@@ -158,6 +171,16 @@
 
   .wellness-supportive {
     background: var(--gradient-supportive);
+  }
+
+  .wellness-energetic {
+    background: var(--gradient-energetic);
+  }
+
+  .wellness-dynamic {
+    background: var(--gradient-dynamic);
+    background-size: 300% 300%;
+    animation: gradient-flow 8s ease-in-out infinite;
   }
 
   .text-wellness-calm {
@@ -180,6 +203,14 @@
     color: hsl(var(--wellness-hope));
   }
 
+  .text-wellness-energy {
+    color: hsl(var(--wellness-energy));
+  }
+
+  .text-wellness-joy {
+    color: hsl(var(--wellness-joy));
+  }
+
   .shadow-gentle {
     box-shadow: var(--shadow-gentle);
   }
@@ -191,4 +222,68 @@
   .shadow-warm {
     box-shadow: var(--shadow-warm);
   }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-vibrant {
+    box-shadow: var(--shadow-vibrant);
+  }
+
+  .btn-vibrant {
+    @apply bg-primary text-primary-foreground shadow-glow transition-all duration-300;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+  }
+
+  .btn-vibrant:hover {
+    @apply scale-105 shadow-vibrant;
+    background: linear-gradient(135deg, hsl(var(--primary-glow)), hsl(var(--primary)));
+  }
+
+  .floating-element {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .bounce-subtle {
+    animation: bounce-subtle 2s ease-in-out infinite;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 100% 50%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
