@@ -22,6 +22,14 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          soft: "hsl(var(--primary-soft))",
+        },
+        wellness: {
+          calm: "hsl(var(--wellness-calm))",
+          peace: "hsl(var(--wellness-peace))",
+          growth: "hsl(var(--wellness-growth))",
+          support: "hsl(var(--wellness-support))",
+          hope: "hsl(var(--wellness-hope))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -62,6 +70,18 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        "2xl": "calc(var(--radius) + 0.5rem)",
+        "3xl": "calc(var(--radius) + 1rem)",
+      },
+      backgroundImage: {
+        'wellness-gradient': 'var(--gradient-calm)',
+        'peaceful-gradient': 'var(--gradient-peaceful)',
+        'supportive-gradient': 'var(--gradient-supportive)',
+      },
+      boxShadow: {
+        'gentle': 'var(--shadow-gentle)',
+        'soft': 'var(--shadow-soft)',
+        'warm': 'var(--shadow-warm)',
       },
       keyframes: {
         "accordion-down": {
