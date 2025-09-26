@@ -7,32 +7,65 @@ const Navigation = () => {
 
   const navItems = [
     { path: "/", label: "Home", icon: Heart },
-    { path: "/questionnaire", label: "Check-In", icon: BarChart3 },
+    { path: "/questionnaire", label: "Check-up", icon: BarChart3 },
     { path: "/journal", label: "Journal", icon: FileText },
     { path: "/support", label: "Support", icon: Phone },
   ];
 
   return (
-    <nav className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl mx-4 mt-4 lg:mx-6 shadow-gentle">
-      <div className="flex flex-wrap justify-center gap-1 p-2">
-        {navItems.map(({ path, label, icon: Icon }) => (
-          <Link
-            key={path}
-            to={path}
-            className={cn(
-              "flex items-center gap-2 px-4 py-3 rounded-xl transition-all duration-300",
-              "hover:bg-primary/10 hover:text-primary",
-              location.pathname === path
-                ? "bg-primary text-primary-foreground shadow-soft"
-                : "text-muted-foreground hover:text-foreground"
-            )}
-          >
-            <Icon className="w-4 h-4" />
-            <span className="text-sm font-medium">{label}</span>
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6">
+        <div className="flex h-16 items-center justify-between">
+          {/* Logo */}
+          <Link to="/" className="flex items-center space-x-2">
+            <Heart className="h-6 w-6 text-primary" />
+            <span className="text-xl font-bold bg-gradient-to-r from-primary to-wellness-calm bg-clip-text text-transparent">
+              MindCare
+            </span>
           </Link>
-        ))}
+
+          {/* Navigation */}
+          <nav className="hidden md:flex items-center space-x-1">
+            {navItems.map(({ path, label, icon: Icon }) => (
+              <Link
+                key={path}
+                to={path}
+                className={cn(
+                  "flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200",
+                  "hover:bg-accent/10 hover:text-accent-foreground",
+                  location.pathname === path
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground"
+                )}
+              >
+                <Icon className="h-4 w-4" />
+                {label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Mobile Navigation */}
+          <nav className="flex md:hidden items-center space-x-1">
+            {navItems.map(({ path, label, icon: Icon }) => (
+              <Link
+                key={path}
+                to={path}
+                className={cn(
+                  "flex items-center gap-1 px-3 py-2 text-xs font-medium rounded-lg transition-all duration-200",
+                  "hover:bg-accent/10 hover:text-accent-foreground",
+                  location.pathname === path
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground"
+                )}
+              >
+                <Icon className="h-4 w-4" />
+                <span className="hidden sm:inline">{label}</span>
+              </Link>
+            ))}
+          </nav>
+        </div>
       </div>
-    </nav>
+    </header>
   );
 };
 

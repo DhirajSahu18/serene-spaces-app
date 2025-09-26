@@ -12,23 +12,21 @@ const Home = () => {
           <div className="mb-8">
             <Heart className="w-20 h-20 mx-auto mb-6 text-primary" />
           </div>
-          <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-wellness-calm bg-clip-text text-transparent">
-            MindfulSpace
+          <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-primary via-wellness-calm to-primary bg-clip-text text-transparent">
+              Your Mental Health
+            </span>
+            <br />
+            <span className="text-wellness-calm">Matters</span>
           </h1>
           <p className="text-lg lg:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
-            Your personal sanctuary for mental wellness. Track your mood, reflect through journaling, 
-            and access support when you need it most.
+            Take care of your mental well-being with our comprehensive support tools.
+            <br />Assessment, journaling, and professional resources - all in one safe space.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <Link to="/questionnaire">
-              <Button size="lg" className="btn-vibrant group">
-                Start Your Journey 
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </Button>
-            </Link>
-            <Link to="/journal">
-              <Button variant="outline" size="lg" className="border-2 border-primary/50 hover:border-primary hover:bg-primary/5 transition-all duration-300">
-                Open Journal
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300">
+                Start Your Journey
               </Button>
             </Link>
           </div>
