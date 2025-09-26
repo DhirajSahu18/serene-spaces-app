@@ -162,7 +162,6 @@
 
   .wellness-gradient {
     background: var(--gradient-calm);
-    animation: gradient-shift 6s ease-in-out infinite;
   }
 
   .wellness-peaceful {
@@ -179,8 +178,6 @@
 
   .wellness-dynamic {
     background: var(--gradient-dynamic);
-    background-size: 300% 300%;
-    animation: gradient-flow 8s ease-in-out infinite;
   }
 
   .text-wellness-calm {
@@ -242,15 +239,15 @@
   }
 
   .floating-element {
-    animation: float 3s ease-in-out infinite;
+    @apply transition-transform duration-300 hover:scale-105;
   }
 
   .pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
+    @apply shadow-glow;
   }
 
   .bounce-subtle {
-    animation: bounce-subtle 2s ease-in-out infinite;
+    @apply transition-transform duration-200;
   }
 }
 

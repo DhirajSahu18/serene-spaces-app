@@ -4,83 +4,83 @@ import { Phone, Globe, Heart, AlertTriangle, Clock, MapPin } from "lucide-react"
 
 const CRISIS_HELPLINES = [
   {
-    name: "National Suicide Prevention Lifeline",
-    number: "988",
-    country: "USA",
+    name: "National Mental Health Programme",
+    number: "1800-91-0099",
+    country: "India",
     available: "24/7",
-    description: "Free and confidential support for people in distress",
+    description: "Government mental health support and counseling",
     urgent: true
   },
   {
-    name: "Crisis Text Line",
-    number: "Text HOME to 741741",
-    country: "USA",
+    name: "Vandrevala Foundation Helpline",
+    number: "1860-266-2345",
+    country: "India",
     available: "24/7",
-    description: "Free crisis support via text message",
+    description: "Free, confidential crisis support and counseling",
     urgent: true
   },
   {
-    name: "Samaritans",
-    number: "116 123",
-    country: "UK",
-    available: "24/7",
-    description: "Free emotional support for anyone struggling to cope",
+    name: "iCall Psychosocial Helpline",
+    number: "022-2556-3291",
+    country: "India",
+    available: "Mon-Sat, 8AM-10PM",
+    description: "Counseling and support for psychological distress",
     urgent: true
   },
   {
-    name: "Lifeline Australia",
-    number: "13 11 14",
-    country: "Australia",
+    name: "Sneha India",
+    number: "044-2464-0050",
+    country: "India",
     available: "24/7",
-    description: "Crisis support and suicide prevention",
+    description: "Suicide prevention and emotional support",
     urgent: true
   },
   {
-    name: "Crisis Services Canada",
-    number: "1-833-456-4566",
-    country: "Canada",
-    available: "24/7",
-    description: "Support for anyone experiencing thoughts of suicide",
+    name: "NIMHANS Helpline",
+    number: "080-4611-0007",
+    country: "India",
+    available: "Mon-Sat, 9AM-5PM",
+    description: "Mental health support from premier institute",
     urgent: true
   }
 ];
 
 const MENTAL_HEALTH_RESOURCES = [
   {
-    name: "NAMI (National Alliance on Mental Illness)",
+    name: "National Institute of Mental Health (NIMHANS)",
+    type: "Institute",
+    url: "https://nimhans.ac.in",
+    description: "Premier mental health research and treatment institute"
+  },
+  {
+    name: "The Live Love Laugh Foundation",
     type: "Organization",
-    url: "https://www.nami.org",
-    description: "Mental health education, support groups, and advocacy"
+    url: "https://www.thelivelovelaughfoundation.org",
+    description: "Mental health awareness and support initiatives"
   },
   {
-    name: "Mental Health America",
+    name: "Mann Talks",
+    type: "Platform",
+    url: "https://manntalks.org",
+    description: "Mental health awareness and support platform"
+  },
+  {
+    name: "Mpower - The Centre",
+    type: "Treatment Center",
+    url: "https://mpowerminds.com",
+    description: "Mental health treatment and awareness center"
+  },
+  {
+    name: "White Swan Foundation",
     type: "Organization",
-    url: "https://www.mhanational.org",
-    description: "Mental health screening tools and resources"
+    url: "https://www.whiteswan.org.in",
+    description: "Mental health information and support resources"
   },
   {
-    name: "BetterHelp",
-    type: "Counseling Service",
-    url: "https://www.betterhelp.com",
-    description: "Online therapy and counseling services"
-  },
-  {
-    name: "Headspace",
+    name: "Mind.fit",
     type: "App",
-    url: "https://www.headspace.com",
-    description: "Meditation and mindfulness exercises"
-  },
-  {
-    name: "Calm",
-    type: "App",
-    url: "https://www.calm.com",
-    description: "Sleep stories, meditation, and relaxation"
-  },
-  {
-    name: "Psychology Today",
-    type: "Directory",
-    url: "https://www.psychologytoday.com",
-    description: "Find therapists and mental health professionals near you"
+    url: "https://mind.fit",
+    description: "Mental fitness and wellbeing platform"
   }
 ];
 

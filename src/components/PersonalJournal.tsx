@@ -28,6 +28,7 @@ const PersonalJournal = () => {
   const [entries, setEntries] = useState<JournalEntry[]>([]);
   const [isWriting, setIsWriting] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [sortBy, setSortBy] = useState<string>("date");
   const [formData, setFormData] = useState({
     title: "",
     content: "",
@@ -137,6 +138,16 @@ const PersonalJournal = () => {
     return MOOD_OPTIONS.find(option => option.value === mood)?.emoji || "😐";
   };
 
+  const getSortedEntries = () => {
+    const sorted = [...entries];
+    if (sortBy === "date") {
+      return sorted.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    } else if (sortBy === "mood") {
+      return sorted.sort((a, b) => a.mood.localeCompare(b.mood));
+    }
+    return sorted;
+  };
+
   if (isWriting) {
     return (
       <div className="max-w-2xl mx-auto p-4">
@@ -215,15 +226,25 @@ const PersonalJournal = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-4">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-bold text-wellness-calm">Personal Journal</h1>
           <p className="text-muted-foreground">Your private space for reflection and growth</p>
         </div>
-        <Button onClick={() => setIsWriting(true)} className="bg-primary">
-          <Plus className="w-4 h-4 mr-2" />
-          New Entry
-        </Button>
+        <div className="flex items-center gap-3">
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            className="px-3 py-2 text-sm border border-border rounded-lg bg-background text-foreground"
+          >
+            <option value="date">Sort by Date</option>
+            <option value="mood">Sort by Mood</option>
+          </select>
+          <Button onClick={() => setIsWriting(true)} className="bg-primary">
+            <Plus className="w-4 h-4 mr-2" />
+            New Entry
+          </Button>
+        </div>
       </div>
 
       {entries.length === 0 ? (
@@ -241,7 +262,7 @@ const PersonalJournal = () => {
         </Card>
       ) : (
         <div className="grid gap-6">
-          {entries.map((entry) => (
+          {getSortedEntries().map((entry) => (
             <Card key={entry.id} className="wellness-card">
               <CardHeader>
                 <div className="flex justify-between items-start">
