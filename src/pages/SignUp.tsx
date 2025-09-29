@@ -57,20 +57,20 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-wellness-light via-background to-primary/5 p-4">
-      <Card className="w-full max-w-md shadow-elegant border-border/50">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 p-4">
+      <Card className="w-full max-w-md shadow-xl border border-blue-200 bg-white/90">
         <CardHeader className="text-center space-y-2">
-          <CardTitle className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+          <CardTitle className="text-2xl font-bold bg-gradient-to-r from-blue-700 via-blue-500 to-blue-400 bg-clip-text text-transparent">
             Join MindCare
           </CardTitle>
-          <CardDescription className="text-muted-foreground">
+          <CardDescription className="text-blue-700/70">
             Create your account to start your wellness journey
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className="text-blue-800">Email</Label>
               <Input
                 id="email"
                 type="email"
@@ -78,11 +78,11 @@ const SignUp = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="transition-all duration-200 focus:scale-[1.02]"
+                className="transition-all duration-200 focus:scale-[1.02] focus:ring-2 focus:ring-blue-400 border-blue-200"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password" className="text-blue-800">Password</Label>
               <Input
                 id="password"
                 type="password"
@@ -90,11 +90,11 @@ const SignUp = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="transition-all duration-200 focus:scale-[1.02]"
+                className="transition-all duration-200 focus:scale-[1.02] focus:ring-2 focus:ring-blue-400 border-blue-200"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirm Password</Label>
+              <Label htmlFor="confirmPassword" className="text-blue-800">Confirm Password</Label>
               <Input
                 id="confirmPassword"
                 type="password"
@@ -102,23 +102,23 @@ const SignUp = () => {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
-                className="transition-all duration-200 focus:scale-[1.02]"
+                className="transition-all duration-200 focus:scale-[1.02] focus:ring-2 focus:ring-blue-400 border-blue-200"
               />
             </div>
             <Button 
               type="submit" 
               disabled={isLoading}
-              className="w-full bg-gradient-primary hover:opacity-90 transition-all duration-200 hover:scale-[1.02] shadow-lg"
+              className="w-full bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white font-semibold transition-all duration-200 hover:scale-[1.02] shadow-lg"
             >
               {isLoading ? "Creating Account..." : "Sign Up"}
             </Button>
           </form>
           <div className="mt-6 text-center">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-blue-700/70">
               Already have an account?{" "}
               <Link 
                 to="/signin" 
-                className="text-primary hover:text-primary/80 font-medium transition-colors"
+                className="text-blue-700 hover:text-blue-900 font-medium transition-colors"
               >
                 Sign in
               </Link>
