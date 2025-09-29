@@ -11,8 +11,39 @@ import Navigation from "./components/Navigation";
 import MentalHealthQuestionnaire from "./components/MentalHealthQuestionnaire";
 import PersonalJournal from "./components/PersonalJournal";
 import SupportResources from "./components/SupportResources";
+import { AuthProvider, useAuth } from "./contexts/AuthContext";
 
 const queryClient = new QueryClient();
+
+const AppContent = () => {
+  const { isAuthenticated } = useAuth();
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Routes>
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="*" element={<SignIn />} />
+        </Routes>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/questionnaire" element={<MentalHealthQuestionnaire />} />
+          <Route path="/journal" element={<PersonalJournal />} />
+          <Route path="/support" element={<SupportResources />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+    </div>
+  );
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -20,21 +51,9 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <div className="min-h-screen bg-background">
-          <Navigation />
-          <main>
-            <Routes>
-              <Route path="/signin" element={<SignIn />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/" element={<Home />} />
-              <Route path="/questionnaire" element={<MentalHealthQuestionnaire />} />
-              <Route path="/journal" element={<PersonalJournal />} />
-              <Route path="/support" element={<SupportResources />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-        </div>
+        <AuthProvider>
+          <AppContent />
+        </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

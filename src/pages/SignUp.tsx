@@ -1,23 +1,59 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert("Passwords don't match!");
+      toast({
+        title: "Error",
+        description: "Passwords don't match!",
+        variant: "destructive",
+      });
       return;
     }
-    // TODO: Handle signup with backend
-    console.log("Sign up with:", { email, password });
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('http://localhost:5000/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Sign up failed');
+      }
+
+      navigate('/signin');
+      toast({
+        title: "Success",
+        description: "Account created successfully. Please sign in.",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to create account. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -71,9 +107,10 @@ const SignUp = () => {
             </div>
             <Button 
               type="submit" 
+              disabled={isLoading}
               className="w-full bg-gradient-primary hover:opacity-90 transition-all duration-200 hover:scale-[1.02] shadow-lg"
             >
-              Sign Up
+              {isLoading ? "Creating Account..." : "Sign Up"}
             </Button>
           </form>
           <div className="mt-6 text-center">
